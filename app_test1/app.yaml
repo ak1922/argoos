@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginxargoweb
+  namespace: sandbox
+  labels:
+    app: nginxargoweb
+spec:
+  selector:
+    matchLabels:
+      app: nginxargoweb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginxargoweb
+    spec:
+      containers:
+        - name: nginxargoweb-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+              name: nginxargoweb
